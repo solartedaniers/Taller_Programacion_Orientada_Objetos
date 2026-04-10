@@ -1,8 +1,20 @@
 package com.universidad.universidad_api.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "estudiantes")
 public class Estudiante extends Persona implements Autenticable, Notificable {
 
-    private final String codigo;
+    @Id
+    @Column(nullable = false, updatable = false)
+    private String codigo;
+
+    protected Estudiante() {
+    }
 
     public Estudiante(String nombre, String correo, String codigo) {
         super(nombre, correo);

@@ -1,8 +1,25 @@
 package com.universidad.universidad_api.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "administrativos")
 public class Administrativo extends Persona implements Autenticable, Notificable, Aprobador {
 
-    private final String area;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String area;
+
+    protected Administrativo() {
+    }
 
     public Administrativo(String nombre, String correo, String area) {
         super(nombre, correo);

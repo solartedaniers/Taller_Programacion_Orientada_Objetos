@@ -1,9 +1,19 @@
 package com.universidad.universidad_api.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class Persona {
 
-    private final String nombre;
-    private final String correo;
+    @Column(nullable = false)
+    private String nombre;
+
+    @Column(nullable = false, unique = true)
+    private String correo;
+
+    protected Persona() {
+    }
 
     protected Persona(String nombre, String correo) {
         this.nombre = nombre;

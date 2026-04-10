@@ -34,9 +34,7 @@ public class AdministrativoService {
     }
 
     public void aprobarSolicitud(String codigoSolicitud, String correoAdmin) {
-        Administrativo admin = administrativoRepository.buscarTodos().stream()
-            .filter(a -> a.getCorreo().equals(correoAdmin))
-            .findFirst()
+        Administrativo admin = administrativoRepository.buscarPorCorreo(correoAdmin)
             .orElseThrow(() -> new ResourceNotFoundException("Administrativo no encontrado: " + correoAdmin));
 
         admin.aprobarSolicitud(codigoSolicitud);

@@ -1,8 +1,25 @@
 package com.universidad.universidad_api.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "profesores")
 public class Profesor extends Persona implements Autenticable, Notificable, Evaluador {
 
-    private final String especialidad;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String especialidad;
+
+    protected Profesor() {
+    }
 
     public Profesor(String nombre, String correo, String especialidad) {
         super(nombre, correo);
